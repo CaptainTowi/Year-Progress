@@ -7,22 +7,25 @@ body {
     margin: 0;
     background-color: #000; /* Background color to black */
     color: #46CA77; /* Text color to #46CA77 */
-}
-
-.container {
+ }
+ 
+ 
+ .container {
     text-align: center;
-    margin-top: -110px; /* Adjust this value to move the text and progress bar upwards */
-}
-
-.progress-bar {
+    margin-top: -70px; /* Adjust this value to move the text and progress bar upwards */
+ }
+ 
+ 
+ .progress-bar {
     width: 100%;
     background-color: #ddd;
     border-radius: 5px;
     overflow: hidden;
     margin-top: 20px;
-}
-
-.progress {
+ }
+ 
+ 
+ .progress {
     height: 30px;
     background-color: #4caf50;
     width: 0;
@@ -30,4 +33,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #000; /* Text color inside the progress bar */
-}
+ }
+ 
+ 
+ 
