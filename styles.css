@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000; /* Change background to black */
+    color: #46CA77; /* Change text color to #46CA77 */
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.progress {
+    height: 30px;
+    background-color: #4caf50;
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000; /* Text color inside the progress bar */
+}
