@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const percentagePassed = (daysPassed / totalDays) * 100;
 
     daysPassedElement.textContent = `Days Passed: ${daysPassed}`;
-    daysLeftElement.textContent = `Days Left: ${daysLeft}`;
+    daysLeftElement.textContent = `Days Left (including today) : ${daysLeft}`;
     progressElement.style.width = `${percentagePassed}%`;
     progressElement.textContent = `${percentagePassed.toFixed(2)}%`; // Display percentage inside the progress bar
 });
