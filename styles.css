@@ -11,7 +11,7 @@ body {
 
 .container {
     text-align: center;
-    margin-top: -90px; /* Adjust this value to move the text and progress bar upwards */
+    margin-top: -110px; /* Adjust this value to move the text and progress bar upwards */
 }
 
 .progress-bar {
