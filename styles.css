@@ -5,12 +5,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #000; /* Change background to black */
-    color: #46CA77; /* Change text color to #46CA77 */
+    background-color: #000; /* Background color to black */
+    color: #46CA77; /* Text color to #46CA77 */
 }
 
 .container {
     text-align: center;
+    margin-top: -50px; /* Adjust this value to move the text and progress bar upwards */
 }
 
 .progress-bar {
