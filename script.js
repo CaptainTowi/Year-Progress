@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
     const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
 
+    // Correctly format the date to "Wed, 9 October"
     const day = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
     const date = currentDate.getDate();
     const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
@@ -18,13 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const daysLeft = totalDays - daysPassed;
     const percentagePassed = (daysPassed / totalDays) * 100;
 
+    // Display today's date without "Today is"
     dateTodayElement.textContent = formattedDate;
 
     daysPassedElement.textContent = `${daysPassed} Days Passed `;
     daysLeftElement.textContent = `${daysLeft} Days Left (including today) `;
     progressElement.style.width = `${percentagePassed}%`;
-    progressElement.textContent = `${percentagePassed.toFixed(2)}%`;
-    progressElement.style.display = 'flex';
-    progressElement.style.alignItems = 'center';
-    progressElement.style.justifyContent = 'center';
+    progressElement.textContent = `${percentagePassed.toFixed(2)}%`; // Display percentage inside the progress bar
 });
