@@ -1,36 +1,46 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #000; /* Background color to black */
-    color: #46CA77; /* Text color to #46CA77 */
+   font-family: Arial, sans-serif;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   margin: 0;
+   background-color: #000; /* Background color to black */
+   color: #46CA77; /* Text color to #46CA77 */
 }
- 
+
 .container {
-    text-align: center;
-    margin-top: -70px; /* Adjust this value to move the text and progress bar upwards */
+   text-align: center;
+   margin-top: -70px; /* Adjust this value to move the text and progress bar upwards */
 }
- 
+.percentage-center {
+   position: absolute; /* Position relative to the viewport */
+   top: calc(53.5% + 15px); /* Move slightly below center (adjust "15px" as needed) */
+   left: 50%; /* Center horizontally */
+   transform: translate(-50%, -50%); /* Adjust for exact centering */
+   font-size: 1.5rem; /* Adjust font size */
+   font-weight: bold;
+   color: #000; /* Change color to black */
+}
+
+
 .progress-bar {
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 20px;
+   width: 100%;
+   background-color: #ddd;
+   border-radius: 5px;
+   overflow: hidden;
+   margin-top: 20px;
+   position: relative; /* Position relative for progress */
 }
- 
+
 .progress {
-    height: 30px;
-    background-color: #4caf50;
-    width: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center; /* Center text horizontally */
-    color: #000; /* Text color inside the progress bar */
-    position: relative; /* Add relative positioning */
-    line-height: 30px; /* Ensure text is vertically centered */
+   height: 30px;
+   background-color: #4caf50;
+   width: 0; /* This width is dynamically set by JavaScript */
+   display: flex; /* Use flexbox for centering */
+   align-items: center; /* Center vertically */
+   justify-content: center; /* Center horizontally */
+   color: #000; /* Text color inside the progress bar */
+   position: relative; /* Ensure it stays inside the progress-bar */
+   white-space: nowrap; /* Ensure text stays on one line */
 }
