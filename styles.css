@@ -26,6 +26,11 @@ body {
  
  
  .progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white; /* Adjust the text color as needed */
     height: 30px;
     background-color: #4caf50;
     width: 0;
