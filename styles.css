@@ -31,4 +31,6 @@ body {
     justify-content: center;
     text-align: center; /* Center text horizontally */
     color: #000; /* Text color inside the progress bar */
+    position: relative; /* Add relative positioning */
+    line-height: 30px; /* Ensure text is vertically centered */
 }
