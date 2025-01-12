@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const daysLeftElement = document.getElementById('days-left');
     const progressElement = document.getElementById('progress');
 
+    // Create a new element for the percentage
+    const percentageDisplay = document.createElement('p');
+    percentageDisplay.classList.add('percentage-center');
+    document.body.appendChild(percentageDisplay);
+
     const currentDate = new Date();
     const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
     const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
@@ -21,9 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Display today's date without "Today is"
     dateTodayElement.textContent = formattedDate;
-
     daysPassedElement.textContent = `${daysPassed} Days Passed `;
     daysLeftElement.textContent = `${daysLeft} Days Left (including today) `;
     progressElement.style.width = `${percentagePassed}%`;
-    progressElement.textContent = `${percentagePassed.toFixed(2)}%`; // Display percentage inside the progress bar
+
+    // Update the new central percentage element
+    percentageDisplay.textContent = `${percentagePassed.toFixed(2)}%`;
+
+    // Remove percentage text from the progress bar
+    progressElement.textContent = '';
 });
