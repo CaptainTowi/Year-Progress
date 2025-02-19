@@ -1,44 +1,33 @@
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #000; /* Background color to black */
-  color: #46CA77; /* Text color to #46CA77 */
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const dateTodayElement = document.getElementById('date-today');
+  const daysPassedElement = document.getElementById('days-passed');
+  const daysLeftElement = document.getElementById('days-left');
+  const progressElement = document.getElementById('progress');
+  const percentageNumberElement = document.getElementById('percentage-number');
 
-.container {
-  text-align: center;
-  margin-top: -70px; /* Adjust this value to move the text and progress bar upwards */
-}
+  const currentDate = new Date();
+  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+  const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
 
-.progress-bar {
-  width: 100%;
-  max-width: 500px; /* Add a max width for consistency across devices */
-  background-color: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 20px auto; /* Center horizontally with margin */
-  position: relative; /* Necessary for positioning children */
-  height: 30px;
-}
+  // Format the date
+  const day = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
+  const date = currentDate.getDate();
+  const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
+  const formattedDate = `${day}, ${date} ${month}`;
 
-.progress {
-  height: 100%;
-  background-color: #4caf50;
-  width: 0; /* This width is dynamically set by JavaScript */
-}
+  const daysPassed = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24));
+  const totalDays = Math.floor((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+  const daysLeft = totalDays - daysPassed;
+  const percentagePassed = (daysPassed / totalDays) * 100;
 
-.percentage-center {
-  position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust for exact centering */
-  font-size: 1rem; /* Ensure consistent font size */
-  font-weight: bold; /* Bold text for visibility */
-  color: #000; /* Text color for the percentage */
-  white-space: nowrap; /* Prevent text wrapping */
-  pointer-events: none; /* Ensure the percentage text doesn't block user interaction */
-}
+  // Display today's date
+  dateTodayElement.textContent = formattedDate;
+  daysPassedElement.textContent = `${daysPassed} Days Passed`;
+  daysLeftElement.textContent = `${daysLeft} Days Left (including today)`;
+
+  // Set the width of the progress bar
+  progressElement.style.width = `${percentagePassed}%`;
+
+  // Update the percentage number floating on the progress bar
+  percentageNumberElement.textContent = `${percentagePassed.toFixed(2)}%`;
+});
