@@ -1,33 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const dateTodayElement = document.getElementById('date-today');
-  const daysPassedElement = document.getElementById('days-passed');
-  const daysLeftElement = document.getElementById('days-left');
-  const progressElement = document.getElementById('progress');
-  const percentageNumberElement = document.getElementById('percentage-number');
+    const dateTodayElement = document.getElementById('date-today');
+    const daysPassedElement = document.getElementById('days-passed');
+    const daysLeftElement = document.getElementById('days-left');
+    const progressElement = document.getElementById('progress');
+    const percentageNumberElement = document.getElementById('percentage-number');
 
-  const currentDate = new Date();
-  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-  const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
+    const currentDate = new Date();
+    const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+    const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
 
-  // Format the date
-  const day = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
-  const date = currentDate.getDate();
-  const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
-  const formattedDate = `${day}, ${date} ${month}`;
+    // Format date (e.g., "Tue, 18 February")
+    const day = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
+    const date = currentDate.getDate();
+    const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
 
-  const daysPassed = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24));
-  const totalDays = Math.floor((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
-  const daysLeft = totalDays - daysPassed;
-  const percentagePassed = (daysPassed / totalDays) * 100;
+    // Calculate day number of the year (e.g., "Day 73")
+    const dayOfYear = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
 
-  // Display today's date
-  dateTodayElement.textContent = formattedDate;
-  daysPassedElement.textContent = `${daysPassed} Days Passed`;
-  daysLeftElement.textContent = `${daysLeft} Days Left (including today)`;
+    // Calculate days passed and days left
+    const totalDays = Math.floor((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+    const daysPassed = dayOfYear;  // Days passed is the same as the day number
+    const daysLeft = totalDays - daysPassed; // Excluding today
 
-  // Set the width of the progress bar
-  progressElement.style.width = `${percentagePassed}%`;
+    const percentagePassed = (daysPassed / totalDays) * 100;
 
-  // Update the percentage number floating on the progress bar
-  percentageNumberElement.textContent = `${percentagePassed.toFixed(2)}%`;
+    // Update elements
+    dateTodayElement.innerHTML = `${day}, ${date} ${month} <strong>Day ${dayOfYear}</strong>`;
+    daysPassedElement.textContent = `${daysPassed} Days Passed`;
+    daysLeftElement.textContent = `${daysLeft} Days Left`;
+
+    progressElement.style.width = `${percentagePassed}%`;
+    percentageNumberElement.textContent = `${percentagePassed.toFixed(2)}%`;
 });
