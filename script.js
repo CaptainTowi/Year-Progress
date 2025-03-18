@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // "Days Passed" should be one less than "Day X"
     const daysPassed = dayOfYear - 1;
+
+    // Fix: Ensure "Days Left" correctly includes today
     const totalDays = Math.floor((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
-    const daysLeft = totalDays - daysPassed; // Keeping "including today" as per your request
+    const daysLeft = totalDays - dayOfYear; // Corrected from `totalDays - daysPassed`
 
     const percentagePassed = (daysPassed / totalDays) * 100;
 
