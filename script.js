@@ -9,25 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
     const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
 
-    // Format date (e.g., "Tue, 18 February")
+    // Format date (e.g., "Tue, 18 March")
     const day = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
     const date = currentDate.getDate();
     const month = currentDate.toLocaleDateString('en-US', { month: 'long' });
 
-    // Calculate day number of the year (e.g., "Day 73")
+    // Calculate the current day of the year
     const dayOfYear = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
 
-    // Calculate days passed and days left
+    // "Days Passed" should be one less than "Day X"
+    const daysPassed = dayOfYear - 1;
     const totalDays = Math.floor((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
-    const daysPassed = dayOfYear;  // Days passed is the same as the day number
-    const daysLeft = totalDays - daysPassed; // Excluding today
+    const daysLeft = totalDays - daysPassed; // Keeping "including today" as per your request
 
     const percentagePassed = (daysPassed / totalDays) * 100;
 
     // Update elements
     dateTodayElement.innerHTML = `${day}, ${date} ${month} <strong>Day ${dayOfYear}</strong>`;
     daysPassedElement.textContent = `${daysPassed} Days Passed`;
-    daysLeftElement.textContent = `${daysLeft} Days Left`;
+    daysLeftElement.textContent = `${daysLeft} Days Left (Including Today)`;
 
     progressElement.style.width = `${percentagePassed}%`;
     percentageNumberElement.textContent = `${percentagePassed.toFixed(2)}%`;
